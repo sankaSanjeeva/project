@@ -1,0 +1,271 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><small>find</small>Builders</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+            <a routerLink="/home" class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/about" class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/category" class="nav-link" href="#">Category</a>
+        </li>
+        <li class="nav-item active">
+            <a routerLink="/register" class="nav-link" href="#">Register<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/logIn" class="nav-link" href="#">LogIn</a>
+        </li>
+        </ul>
+    </div>
+</nav> -->
+
+<!-- old form -->
+<!-- <div class="container">
+  <br>
+  <div class="title">
+    <h1>Registration</h1>
+  </div><hr>
+
+  <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="name form-inline">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <label>Name</label>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <input class="form-control" type="text" placeholder="first" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" name="userName" [(ngModel)]="userModel.userName">
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <input class="form-control" type="text" placeholder="middle">
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <input class="form-control" type="text" placeholder="last">
+      </div>
+      <div class="col-lg-3 offset-lg-3">
+        <small [class.d-none]="name.valid || name.untouched" class="text-danger">first name is require</small>
+      </div>
+    </div><br>
+  
+    <div class="address form-inline" ngModelGroup="address">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <label>Address</label>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <input type="text" class="form-control" name="street" placeholder="street" [(ngModel)]="userModel.street">
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+          <input type="text" class="form-control" name="city" placeholder="city" [(ngModel)]="userModel.city">
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+          <input type="text" class="form-control" name="state" placeholder="state" [(ngModel)]="userModel.state">
+      </div>
+    </div><br>
+
+    <div class="distric form-inline">
+      <div class="col-lg-3 col-xs-12">
+        <label>Distric</label>
+      </div>
+      <div class="col-lg-3 col-xs-12">
+        <select name="distric" class="custom-select" required #distric="ngModel" [class.is-invalid]="distric.invalid && distric.touched" [(ngModel)]="userModel.distric">
+          <option value="">--select distric--</option>
+          <option *ngFor="let distric of districs">{{distric}}</option>
+        </select>
+      </div>
+      <small class="text-danger" [class.d-none]="distric.valid || distric.untouched">Please choose one</small>
+    </div><br>
+
+    <div class="bd form-inline">
+      <div class="col-lg-3 col-xs-12">
+        <label>Birthday</label>
+      </div>
+      <div class="col-lg-9 col-xs-12">
+          <input type="date" class="form-control" name="bd" required #bd="ngModel" [class.is-invalid]="bd.invalid && bd.touched" [(ngModel)]="userModel.bd">
+          <small [class.d-none]="bd.valid || bd.untouched" class="col text-danger">Birthday is require</small>
+        </div>
+    </div>
+
+    <div class="nic form-inline">
+        <dir class="col-lg-3 col-xs-12">
+          <label>NIC number</label>
+        </dir>
+        <div class="col-lg-9 col-xs-12">
+          <input type="text" class="form-control" name="nic" maxlength="10" required #nic="ngModel" [class.is-invalid]="nic.invalid && nic.touched" [(ngModel)]="userModel.nic">
+          <small [class.d-none]="nic.valid || nic.untouched" class="col text-danger">NIC is require</small>
+        </div>
+      </div>      
+  
+    <div class="email form-inline">
+      <dir class="col-lg-3 col-xs-12">
+        <label>Email</label>
+      </dir>
+      <div class="col-lg-3 col-xs-12">
+        <input type="email" class="form-control" name="email" [(ngModel)]="userModel.email">
+      </div>
+    </div>
+
+    <div class="phone form-inline">
+      <div class="col-lg-3 col-xs-12">
+        <label>Phone</label>
+      </div>
+      <div class="col-lg-3 col-xs-12">
+        <input type="tel" maxlength="10" #phone="ngModel" pattern="^\d{10}$" required [class.is-invalid]="phone.invalid && phone.touched" class="form-control" name="phone" [(ngModel)]="userModel.phone">
+        <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+          <div *ngIf="phone.errors.required">
+          <small class="text-danger" [class.d-none]="phone.valid">Phone number is required</small>
+          </div>
+          <div *ngIf="phone.errors.pattern">
+            <small class="text-danger" [class.d-none]="phone.untouched">Phone number must be 10 digits</small>
+          </div>
+        </div>
+      </div>
+    </div><br>
+  
+    <div class="type form-inline">
+        <div class="col-lg-3 col-xs-12">
+            <label>Construct type</label>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+          <select required #topic="ngModel" [class.is-invalid]="topic.invalid && topic.touched" class="custom-select" name="topic" [(ngModel)]="userModel.topic">
+          <option value="">--type--</option>
+          <option *ngFor="let topic of topics">{{topic}}</option>
+          </select>
+        </div>
+        <small class="text-danger" [class.d-none]="topic.valid || topic.untouched" >Please choose one</small>
+    </div>
+  
+    <dir class="form-group offset-lg-1">
+      <button [disabled]="userForm.form.invalid" class="btn btn-primary" type="submit">Submit</button>  
+    </dir>
+  </form>
+</div> -->
+
+
+<div class="form">
+  <br>
+  <mat-card>
+    <section>
+      <h2>Registration</h2>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="registerForm">
+
+      <section>
+        <span>Name</span>
+        <br>
+        <mat-form-field class="threeDivider">
+          <input matInput placeholder="first name" formControlName="fName" [errorStateMatcher]="matcher" #fName>
+          <mat-error>
+            <span *ngIf="!registerForm.get('fName').valid && registerForm.get('fName').touched">Please enter First Name</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="threeDivider">
+          <input matInput placeholder="middle name" formControlName="mName" #mName>
+        </mat-form-field>
+
+        <mat-form-field class="threeDivider">
+          <input matInput placeholder="last name" formControlName="lName" #lName>
+        </mat-form-field>
+      </section>
+
+      <section>
+        <span>Address</span>
+        <br>
+        <mat-form-field class="threeDivider">
+          <input matInput placeholder="line1" formControlName="line1" [errorStateMatcher]="matcher" #line1>
+          <mat-error>
+            <span *ngIf="!registerForm.get('line1').valid && registerForm.get('line1').touched">Please enter Address Line 1</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="threeDivider">
+          <input matInput placeholder="line2" formControlName="line2" [errorStateMatcher]="matcher" #line2>
+          <mat-error>
+            <span *ngIf="!registerForm.get('line2').valid && registerForm.get('line2').touched">Please enter Address Line 2</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="threeDivider">
+          <input matInput placeholder="line3" formControlName="line3" [errorStateMatcher]="matcher" #line3>
+          <mat-error>
+            <span *ngIf="!registerForm.get('line3').valid && registerForm.get('line3').touched">Please enter Address Line 3</span>
+          </mat-error>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field class="threeDivider">
+          <input matInput placeholder="city" formControlName="city" [errorStateMatcher]="matcher" #city>
+          <mat-error>
+            <span *ngIf="!registerForm.get('city').valid && registerForm.get('city').touched">Please enter City</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="threeDivider">
+          <mat-select placeholder="distric" formControlName="distric" [errorStateMatcher]="matcher" #distric>
+            <mat-option *ngFor="let distric of districs" [value]="distric">{{distric}}</mat-option>
+          </mat-select>
+          <mat-error>
+            <span *ngIf="!registerForm.get('distric').valid && registerForm.get('distric').touched">Please enter Distric</span>
+          </mat-error>
+        </mat-form-field>
+      </section>
+        
+        <mat-form-field class="threeDivider">
+          <input matInput [matDatepicker]="picker" placeholder="mm/dd/yyyy" formControlName="birthday" [errorStateMatcher]="matcher" #birthday>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>
+            <span *ngIf="!registerForm.get('birthday').valid && registerForm.get('birthday').touched">Please enter Birthday</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="threeDivider">
+          <mat-select placeholder="gender" formControlName="gender" [errorStateMatcher]="matcher" #gender>
+            <mat-option *ngFor="let gender of genders" [value]="gender">{{gender}}</mat-option>
+          </mat-select>
+          <mat-error>
+            <span *ngIf="!registerForm.get('gender').valid && registerForm.get('gender').touched">Please select one</span>
+          </mat-error>
+        </mat-form-field>
+        <br>
+  
+        <mat-form-field class="threeDivider">
+          <input matInput maxlength="10" placeholder="ID number" formControlName="nic" [errorStateMatcher]="matcher" #nic>
+          <mat-error>
+            <span *ngIf="!registerForm.get('nic').valid && registerForm.get('nic').touched">Please enter NIC Number</span>
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field class="threeDivider">
+          <input matInput placeholder="email" formControlName="email" #email>
+        </mat-form-field>
+        <br>
+  
+        <mat-form-field class="threeDivider">
+          <input matInput type="tel" maxlength="10"  placeholder="phone" formControlName="phone" [errorStateMatcher]="matcher" #phone>
+          <mat-error>
+            <span *ngIf="!registerForm.get('phone').valid && registerForm.get('phone').touched">Please enter Phone Number</span>
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field class="threeDivider">
+          <mat-select placeholder="constructor type" formControlName="cType" [errorStateMatcher]="matcher" #cType>
+            <mat-option *ngFor="let cType of cTypes" [value]="cType">{{cType}}</mat-option>
+          </mat-select>
+          <mat-error>
+            <span *ngIf="!registerForm.get('cType').valid && registerForm.get('cType').touched">Please enter constructor type</span>
+          </mat-error>
+        </mat-form-field>
+
+        <div class="button-row">
+          <button type="submit" [disabled]="!registerForm.valid" (click)="registerConstructor(fName.value, mName.value, lName.value, line1.value, line2.value, line3.value, city.value, distric.value, birthday.value, gender.value, nic.value, email.value, phone.value, cType.value)" mat-raised-button color="primary">save</button>
+        </div>
+    </form>
+  </mat-card>
+</div>

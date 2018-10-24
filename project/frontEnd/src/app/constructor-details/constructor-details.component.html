@@ -1,0 +1,27 @@
+<mat-card class="details">
+  <mat-card-header>
+    <mat-card-title><h2>Constructor Details</h2></mat-card-title>
+    <mat-card-subtitle>{{builder.cType}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <dl>
+      <dt>Name:</dt>
+      <dd>{{builder.fName +" "+ builder.mName +" "+ builder.lName}}</dd><br>
+      <dt>Address:</dt>
+      <dd>{{builder.line1 +", "+ builder.line2 +", "+ builder.line3}}</dd><br>
+      <dt>City:</dt>
+      <dd>{{builder.city}}</dd><br>
+      <dt>Distric:</dt>
+      <dd>{{builder.distric}}</dd><br>
+      <dt>Age:</dt>
+      <dd>{{builder.birthday}}</dd><br>
+      <!-- <dd>{{byear | date:'yyyy'}}</dd> -->
+      <dt>Gender:</dt>
+      <dd>{{builder.gender}}</dd><br>
+      <dt>Email:</dt>
+      <dd>{{builder.email}}</dd><br>
+      <dt>Contact no.:</dt>
+      <dd>{{builder.phone}}</dd>
+    </dl>
+  </mat-card-content>
+</mat-card>

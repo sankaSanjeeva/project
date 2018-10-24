@@ -1,0 +1,40 @@
+table{
+    width: 100%;
+}
+
+.details{
+    margin: 10px 20px auto;
+}
+
+
+.sidenav-container {
+    height: 100%;
+}
+
+.sidenav {
+    width: 300px;
+    padding-top: 70px;
+}
+
+.mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+}
+
+.search{
+    float: left;
+}
+
+
+/* without side nav */
+/*  .menu{
+     width: 25%;
+     height: 100%;
+     float: left;
+ }
+
+ .category{
+     width: 75%;
+     height: 100%;
+     float: left;
+ } */
